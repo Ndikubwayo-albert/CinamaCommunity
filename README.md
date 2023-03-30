@@ -1,2 +1,2 @@
-# CinamaCommunity
+# CinemaCommunity
 Platform for movie lovers 
