@@ -1,0 +1,632 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://kit.fontawesome.com/d885b75ad4.js" crossorigin="anonymous"></script>
+	<title>profile</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: 'Tahoma', sans-serif;
+			box-sizing: border-box;
+		 }
+		html{
+			scroll-behavior: smooth;
+		}
+		body{
+			background: #080808;
+			color: #fff;
+		}
+		.container{
+			padding: 5px 5%;
+		}
+		nav{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background: #080808;
+			padding: 5px, 5%;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+		}
+		nav h1{
+			font-size: 45px;
+			font-weight: bold;
+			cursor: pointer;
+			margin-left: 10px;
+		}
+		nav h1 i{
+			padding: 5px;
+			font-size: 40px;
+		}
+
+		nav span{
+			color: #ff004f;
+			font-weight: bold;
+			font-size: 40px;
+		}
+		nav ul li{
+			display: inline-block;
+			list-style: none;
+			margin: 10px;
+			color: #fff;
+
+		}
+		nav-link{
+			color: #fff;
+			font-size: 16px;
+		}
+
+		nav ul li a{
+			color: #fff;
+			font-weight: bold;
+			font-size: 18px;
+			text-decoration: none;
+			cursor: pointer;
+			position: relative;
+		}
+
+		nav ul li a::after{
+			content: '';
+			width: 0;
+			height: 3px;
+			background: #ff004f;
+			position: absolute;
+			left: 0;
+			bottom: -6px;
+			transition: 0.5s;
+
+		}
+
+		nav ul li a:hover::after{
+			width: 100%;
+		}
+		.nav-middle form{
+			display: flex;
+		}
+		form input{
+			width: 100%;
+			border: 0;
+			outline: none;
+			background: #262626;
+			padding: 5px;
+			margin: 10px 0;
+			color: #fff;
+			font-size: 18px;
+			border-radius: 6px;
+		}
+
+		.nav-right{
+			display: flex;
+			align-items: center;
+		}
+		.nav-right img{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			margin-top: 5px;
+			margin-left: 7px;
+			cursor: pointer;
+		}
+		.nav-right img:hover{
+			opacity: 0.7;
+		}
+		.nav-right-drop{
+			position: absolute;
+			width: 250px;
+			background: rgba(57, 91, 100, 1);
+			float: left;
+			left: 76%;
+			margin-top: 10px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(1, 1, 1, 0.8);
+			transition: max-height 0.3s;
+			overflow: hidden;
+			max-height: 0;
+
+		}
+		.nav-right-drop-height{
+			max-height: 120px;
+		}
+		.nav-right-drop .user-profile{
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			padding: 10px;
+		}
+		.nav-right-drop .user-profile img{
+				width: 40px;
+			height: 40px;
+			border-radius: 50%;
+
+		}
+		.nav-right-drop .user-profile a{
+			text-decoration: none;
+			color: #fff;
+			margin-top: 5px;
+		}
+		.nav-right-drop-link{
+			margin: 20px 30px;
+		}
+		.nav-right-drop-link a{
+			text-decoration: none;
+			color: #fff;
+			margin-top: 20px;
+
+		}
+
+		.nav-right-drop .user-profile a:hover{
+			color: #ff004f;
+		}
+		.nav-right-drop-link a:hover{
+			color: #ff004f;
+		}
+		.copyright{
+			width: 100%;
+			text-align: center;
+			padding: 9px;
+			background: #262626;
+			font-weight: 300;
+			margin-top: 20px;
+		}
+
+		.copyright i:hover{
+			cursor: pointer;
+			color: #ff004f;
+		}
+
+		/*-----user details-------*/
+
+		.user-details{
+			height: 70vh;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		.user-details-left{
+			flex-basis: 30%;
+			height: auto;
+			width: auto;
+			background: #262626;
+			border-radius: 5px;
+
+		}
+		.user-details-left img{
+			width: 200px;
+			height: 200px;
+			border-radius: 5px;
+			margin: 10px 10px;
+		}
+		.user-details-left p{
+			padding: 10px;
+			color: #fff;
+			font-weight: inherit;
+		}
+		.user-details-right-comment{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			flex-basis: 30%;
+			background: #262626;
+			border-radius: 5px;
+			height: 30vh;
+		}
+		.user-details-right{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			flex-basis: 30%;
+			background: #262626;
+			border-radius: 5px;
+			height: 30vh;
+		}
+		.user-button{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.user-button button{
+			width: 120px;
+			height: 50px;
+			border: 1px solid #ff004f;
+			border-radius: 8px;
+			background: #ff004f;
+			color: #fff;
+			cursor: pointer;
+			margin: 8px;
+		}
+		.update{
+		  position: absolute;
+			width: 400px;
+			background: rgba(57, 91, 100, 1);
+			float: left;
+			left: 37%;
+			margin-top: -450px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(1, 1, 1, 0.8);
+			transition: max-height 0.3s;
+			overflow: hidden;
+			max-height: 0;
+
+		}
+
+		.update form{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.update-buttons{
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+		.update-buttons button{
+			width: 120px;
+			height: 50px;
+			border: 1px solid #ff004f;
+			border-radius: 8px;
+			background: #ff004f;
+			color: #fff;
+			cursor: pointer;
+			margin: 20px 10px;
+		}
+		.update input{
+			width: 90%;
+			border: 0;
+			outline: none;
+			background: #262626;
+			padding: 10px;
+			margin: 10px 0;
+			color: #fff;
+			font-size: 18px;
+			border-radius: 6px;
+		}
+		.update-height{
+			max-height: 400px;
+		}
+		.update-hide{
+		    position: absolute;
+			width: 400px;
+			background: rgba(57, 91, 100, 1);
+			float: left;
+			left: 37%;
+			margin-top: -400px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(1, 1, 1, 0.8);
+			transition: max-height 0.3s;
+			overflow: hidden;
+			max-height: 0;
+
+		}
+
+		.update-pic{
+			position: absolute;
+			width: 400px;
+			background: rgba(57, 91, 100, 1);
+			float: left;
+			left: 37%;
+			box-shadow: 0 0 10px rgba(1, 1, 1, 0.8);
+			transition: max-height 0.3s;
+			overflow: hidden;
+			max-height: 0;
+			margin-top: -450px;
+			border-radius: 5px;
+		}
+		.update-pic-height{
+			max-height: 400px;
+		}
+		.update-pic input{
+					width: 90%;
+			border: 0;
+			outline: none;
+			background: #262626;
+			padding: 10px;
+			margin: 10px 10px;
+			color: #fff;
+			font-size: 18px;
+			border-radius: 6px
+		}
+		.update-pic p{
+			padding: 5px;
+		}
+		.update-pic h1{
+			padding: 5px;
+		}
+
+		.update-pic img{
+			width: 120px;
+			height: 120px;
+			padding: 20px;
+		}
+		.update .button{
+						width: 120px;
+			height: 50px;
+			border: 1px solid #ff004f;
+			border-radius: 8px;
+			background: #ff004f;
+			color: #fff;
+			cursor: pointer;
+			margin: 20px 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+				.middle-nav{
+	display: none;
+}
+@media only screen and (max-width: 600px) {
+	.container {
+		padding: 0;
+	}
+	.current {
+    display: none;
+}
+nav{
+	padding: 5px 5%;
+}
+	.nav-right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+		.right-sidebar{
+			display: none;
+		}
+
+		.left-sidebar{
+			display: none;
+		}
+
+		.middle-sidebar {
+    flex-basis: 100%;
+		}
+
+		.nav-middle{
+			display: none;
+		}
+
+		.nav-right ul{
+			display: none;
+		}
+
+		.nav h1{
+			 margin-right: 10px;
+			font-size: 35px;
+		}
+
+		.nav span{
+			font-size: 30px
+		}
+		.nav-right-drop {
+    margin-left: -170px;
+		}
+		.middle-nav{
+			display: flex;
+			background: #080808;;
+			top: 63px;
+		}
+		.middle-nav ul li a{
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+}
+.middle-nav ul li a::after{
+	content: '';
+	width: 0;
+	height: 3px;
+	background: #ff004f;
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	transition: 0.5s;
+
+}
+.middle-nav ul li a:hover::after{
+	width: 100%;
+}
+		.middle-nav ul li{
+	display: inline-block;
+	list-style: none;
+	margin: 10px;
+	color: #080808;
+
+}
+.middle-nav ul{
+	margin-left: 15px;
+}
+nav h1 i{
+	font-size: 25px;
+}
+.login{
+	padding: 10px;
+}
+.user-details {
+	flex-direction: column;
+	padding: 10px;
+	height: auto;
+}
+.user-details-left{
+	margin-bottom: 10px;
+}
+.user-details-right{
+	margin-bottom: 10px;
+}
+
+}
+	</style>
+</head>
+<body>
+<div class="container">
+		<nav>
+		<h1>C<span>inemania</span><i class="fa-solid fa-film"></i></h1>
+		<div class="nav-middle">
+			<form>
+				<input type="text" name="movie" placeholder=" search🔍" onblur="">
+			</form>
+		</div>
+
+		<div class="nav-right">
+			<ul>
+				<li><a href="{% url 'dashboard' %}">Home</a></li>
+				<li><a href="{% url 'post' %}">Add Post</a></li>
+				<li><a href="{% url 'myposts' %}">My Posts</a></li>
+			</ul>
+			<a href="#"><img src="{{ user.createuser.avatar.url }}" onclick="show()"></a>
+
+		</div>
+	</nav>
+		<div class="nav-right-drop">
+			<div class="user-profile">
+             <img src="{{ user.createuser.avatar.url }}">
+              <div>
+              <p>{{ user.first_name }} {{ user.last_name }}</p>
+              <a href="{% url 'profile' %}">See Your Profile</a>  
+          </div>
+        </div>
+        <hr>
+        <div class="nav-right-drop-link">
+        	<a href="{% url 'logoutpage' %}">Logout</a>
+        </div>
+	</div>
+
+</div>
+
+
+
+	<div class="middle-nav">
+			<ul>
+				<li><a href="{% url 'dashboard' %}">Home</a></li>
+				<li><a href="{% url 'post' %}">Add Post</a></li>
+				<li><a href="{% url 'myposts' %}">My Posts</a></li>
+			</ul>
+		</div>
+
+
+<!-- prifile details -->
+<div class="container">
+
+	<div class="user-details">
+		<div class="user-details-left">
+				<img src="{{ user.createuser.avatar.url }}">
+			<p>Username is your email: {{ user.email }}</p>
+			<p>First Name: {{ user.first_name }}</p>
+			<p>Last Name: {{ user.last_name }}</p>
+			<p>Age: {{ user.createuser.age }}</p>
+			<p>Gender: {{ user.createuser.user_gender }}</p>
+		</div>
+		<div class="user-details-right">
+			<h1>Posts</h1>
+			<h2>{{ posts.count }}</h2>
+		</div>
+				<div class="user-details-right-comment">
+					<h1>Comments</h1>
+					<br>
+					<h2>{{ comments.count }}</h2>
+		</div>
+	</div>
+</div>
+
+<div class="user-button">
+	<button onclick="ShowForm()">Update Profile</button>
+	<button onclick="ShowFormPic()">Change Picture</button>
+</div>
+
+
+<div class="update" id="update-close">
+	<form action="{% url 'updateprofile' %}" method="POST">
+	{% csrf_token %} 
+		<h1>Update Profile</h1>
+		<input type="text" name="firstname" value="{{ user.first_name }}" required placeholder="first name">
+		<input type="text" name="lastname" value="{{ user.last_name }}" required placeholder="lastname">
+			<div class="update-buttons">
+		<button type="submit">Save</button>
+	<div class="button" onclick="Close()">Close</div>
+</div>
+	</form>
+
+</div>
+
+<div class="update-pic" id="update-pic-close">
+	<form action="{% url 'updateprofilepic' %}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %} 
+		<h1>Update Picture</h1>
+		<p>Current Picture</p>
+		<img src="{{ user.createuser.avatar.url }}">
+		<input type="file" name="img" required>
+			<div class="update-buttons">
+		<button type="submit">Change</button>
+	<button onclick="ClosePic()">Close</button>
+</div>
+	</form>
+
+</div>
+
+<div class="copyright">
+  <p>Copyright &copy Knights <i class="fas fa-heart"></i> Made with Django</p>
+</div>
+<!-- scripts -->
+<script type="text/javascript">
+	var drop = document.querySelector(".nav-right-drop");
+	function show() {
+	
+	drop.classList.toggle("nav-right-drop-height");
+  
+}
+
+</script>
+
+<script type="text/javascript">
+	var menu = document.querySelector(".update");
+	function ShowForm(){
+	
+	menu.classList.toggle("update-height");
+  
+}
+
+</script>
+
+
+<script type="text/javascript">
+
+function Close(){
+ 	document.getElementById('update-close').classList.remove('update-height');
+};
+
+</script>
+
+<script type="text/javascript">
+	var menu_pic = document.querySelector(".update-pic");
+	function ShowFormPic(){
+	
+	menu_pic.classList.toggle("update-pic-height");
+  
+}
+
+</script>
+
+<script type="text/javascript">
+
+function ClosePic(){
+ 	document.getElementById('update-pic-close').classList.remove('update-pic-height');
+};
+
+</script>
+
+</body>
+</html>

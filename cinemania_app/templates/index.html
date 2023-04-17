@@ -1,0 +1,420 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Cinemania</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/d885b75ad4.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'index.css' %}">
+  <link rel="stylesheet" media="screen and|not|only (max-width: 600px)" href="{% static 'index.css' %}"> 
+  <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+  <style type="text/css">
+    .btn2 a{
+  color: #fff;
+  text-decoration: none;
+
+}
+.movie-content a{
+   color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+    }
+ .movie-content a:hover{
+   color: #ff004f;
+    }   
+  
+    
+
+.about{
+  /*position: relative;*/
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('{% static "images/bkg/image8.jpg" %}');
+}
+
+
+.about p{
+  font-size: 19px;
+  font-weight: bold;
+}
+.row-movie{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  height: auto;
+}
+.movies{
+  height: 100vh;
+}
+.movies button{
+  margin-top: 20px;
+  margin-left: 45%;
+}
+.movie-content{
+  padding: 10px;
+  margin: 45px 20px;
+
+}
+.movie-content img{
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+}
+.movie-content p{
+  width: 50%;
+  font-weight: bold;
+  padding: 10px;
+}
+.team{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.team-h h1{
+  font-size: 70px;
+  font-weight: bold;
+  margin-right: 100px;
+}
+.team-pro{
+  
+  margin: 40px;
+}
+.team-pro p{
+  
+  margin: 10px;
+}
+.team-pro img{
+  width: 250px;
+  height: 300px;
+  border-radius: 5px;
+}
+#movie h1{
+  font-weight: bolder;
+  font-size: 30px;
+  margin-right: 50px;
+}
+nav .fas{
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  nav .fas{
+  display: block;
+  font-size: 25px;
+  margin-right: 10px;
+}
+nav ul{
+  background: #ff004f;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100vh ;
+  padding: 50px;
+  transition: right 0.5s;
+}
+nav ul li{
+  display: block;
+  margin: 25px;
+}
+nav ul .fas{
+  top: 25px;
+  left: 25px;
+  position: absolute;
+  cursor: pointer;
+
+}
+  body {
+    background-color: #080808;
+  }
+  .container{
+  width: 100%;
+  }
+  .home-header{
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("{% static 'images/bkg/image5.jpg' %}");
+  animation: none;
+}
+.home-header-text h1{
+  margin-top: 70px;
+}
+.home-header-text{
+  margin-top: 5%;
+  font-size: 20px;
+  margin-top: 40px;
+
+}
+.home-header-buttons {
+    margin-top: 30px;
+}
+.movies {
+    height: auto;
+}
+#movie h1 {
+    font-weight: bolder;
+    font-size: 16px;
+    margin: 20px;
+}
+
+
+.subtitle {
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    margin: 20px;
+}
+.contact-left p {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.social {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.about p {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 10px;
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.movies button {
+    margin-top: 20px;
+    margin-left: 33%;
+    margin-bottom: 15px;
+}
+nav h1 {
+    font-size: 35px;
+    margin-left: 10px;
+}
+nav span {
+    font-size: 30px;
+}
+.row-movie {
+    flex-wrap: wrap;
+}
+.top {
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+.home-contact {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.team-h h1 {
+  margin-top: 10px;
+    font-size: 50px;
+}
+.contact-right form {
+    width: 100%;
+    height: auto;
+}
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+.screen {
+    margin-left: 100px;
+    margin-bottom: 15px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="home-header" id="home">
+ <div class="container">
+    <nav>
+    <h1>C<span>inemania</span><i class="fa-solid fa-film"></i></h1>
+    <ul id="sidebarmenu">
+      <li><a class="nav-link" href="">Home</a></li>
+      <li><a class="nav-link" href="#movie">Movies</a></li>
+      <li><a class="nav-link" href="#contact">Contact us</a></li>
+      <li><a class="nav-link" href="#team">Team</a></li>
+      <li><a class="nav-link" href="{% url 'loginpage' %}">Login</a></li>
+      <i class="fas fa-times" onclick="closemenu()"></i>
+    </ul>
+    <i class="fas fa-bars" onclick="openmenu()"></i>
+  </nav>
+  <div class="home-header-text">
+    <h1>Cinemania <span>Community</span></h1>
+    <p>Hi there, Welcome to Cinemania Community<br>
+    we are here to give you best experience in Movies,<br>
+    daily discussion on movies anr<br>meet others who share their interest on Movies</p>
+  </div>
+  <div class="home-header-buttons">
+    <button class="btn"><a href="{% url 'createaccount' %}">Join us</a></button>
+    <button class="btn"><a href="#aboutus">More about us</a></button>
+
+  </div>
+ </div>
+</div>
+
+<!-- movies -->
+<div class="movies" id="movie">
+  <div class="container">
+    <h1>Current Movies From Our Community</h1>
+    <div class="row-movie">
+      {% for movie in movies%}
+      <div class="movie-content">
+        <img src="{{ movie.poster.url }}">
+        <p><a href="{% url 'comment' movie.id %}">{{ movie.title }}</a></p>
+      </div>
+      {% endfor %}
+   
+     
+    </div>
+    <button class="btn2"><a href="{% url 'createaccount' %}">Join us</a></button>
+  </div>
+  
+</div>
+
+
+<!-- About us ----->
+
+<div class="home-contact about" id="aboutus">
+  <div class="container">
+    <div class="row">
+      <div class="contact-left">
+        <h1 class="subtitle">About us</h1>
+        <p></p>
+        <p></p>
+        <div class="social">  
+        </div>       
+      </div>
+
+      <div class="contact-right">
+        <p>Cinemania is a social Community platform for sharing your taste in film. Use it share or discuss films as you watch them, or just to keep
+        in touch with the community, by sharing or suggesting them the Movies they can watch
+        and enjoy too.
+     </p><br>
+          <button class="btn2 screen"><a href="{% url 'createaccount' %}">Join us</a></button>
+      
+      </div>
+      
+    </div>
+
+    
+  </div>
+</div>
+
+<!-- working team -->
+
+{% comment %} <div class="home-contact" id="team">
+  <div class="container">
+  <div class="team">
+    <div class="team-h">
+      <h1>Team</h1>
+    </div>
+    <div class="team-pro">
+      <img src="{% static 'images/team/team1.jpg' %}">
+      <p>Byishimo Teto Joseph</p>
+      <div class="social">
+          <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+          
+        </div>
+    </div>
+    <div class="team-pro">
+      <img src="{% static 'images/team/team2.jpeg' %}">
+      <p>Umutoni Mireille</p>
+      <div class="social">
+          <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+          
+        </div>
+    </div>
+    
+  </div>
+  </div>
+</div> {% endcomment %}
+
+
+<!-- contact us ----->
+
+<div class="home-contact" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="contact-left">
+        <h1 class="subtitle">Contact us</h1>
+        <p><i class="fas fa-paper-plane"></i>knights@example.com</p>
+        <p><i class="fas fa-phone-square-alt"></i>+250789412421</p>
+        <div class="social">
+          <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+          <a href=""><i class="fa-brands fa-twitter"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+          
+        </div>
+
+        
+      </div>
+
+      <div class="contact-right">
+        <form method='POST' action="{% url 'home' %}">
+          {% csrf_token %}
+          <input type="text" name="name" placeholder="Your  Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea style="resize: none" name="message" rows="6" placeholder="Your Message"></textarea>
+          <button type="submit" class="btn2">Submit</button>
+          {% for message in messages %}
+          <p class="contact-p">{{ message }}</p>
+          {% endfor%}
+        </form>
+      </div>
+      
+    </div>
+
+    
+  </div>
+</div>
+
+
+
+<a href="#home" class="top"><i class="fa-solid fa-chevron-up"></i></a>
+<div class="copyright">
+  <p>Copyright &copy Knights <i class="fas fa-heart"></i> Made with Django</p>
+</div>
+
+
+ <script type="text/javascript">
+    var side = document.getElementById("sidebarmenu");
+
+    function openmenu() {
+      side.style.right = "0";
+    }
+
+     function closemenu() {
+      side.style.right = "-250px";
+    }
+ </script>
+</body>
+</html>

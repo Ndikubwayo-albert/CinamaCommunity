@@ -1,0 +1,4 @@
+main color: #D4ECDD
+hover color: #A5C9CA 
+background_color: #395B64
+dark color: #2C3333

@@ -1,0 +1,655 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+	<title>Home</title>
+	<script src="https://kit.fontawesome.com/d885b75ad4.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Tahoma', sans-serif;
+	box-sizing: border-box;
+}
+html{
+	scroll-behavior: smooth;
+}
+body{
+	background: #080808;
+	color: #fff;
+}
+.container{
+	padding: 5px 5%;
+	top: 0;
+	background: #080808;
+	position: sticky;
+	z-index: 100;
+}
+nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #080808;
+	padding: 5px 5%;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+nav h1{
+	font-size: 45px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-left: 10px;
+}
+nav h1 i{
+	padding: 5px;
+	font-size: 40px;
+}
+
+nav span{
+	color: #ff004f;
+	font-weight: bold;
+	font-size: 40px;
+}
+nav ul li{
+	display: inline-block;
+	list-style: none;
+	margin: 10px;
+	color: #fff;
+
+}
+nav-link{
+	color: #fff;
+	font-size: 16px;
+}
+
+nav ul li a{
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+}
+
+nav ul li a::after{
+	content: '';
+	width: 0;
+	height: 3px;
+	background: #ff004f;
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	transition: 0.5s;
+
+}
+
+nav ul li a:hover::after{
+	width: 100%;
+}
+.nav-middle form{
+	display: flex;
+}
+form input{
+	width: 100%;
+	border: 0;
+	outline: none;
+	background: #262626;
+	padding: 5px;
+	margin: 10px 0;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 6px;
+}
+
+.nav-right{
+	display: flex;
+	align-items: center;
+}
+.nav-right img{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-top: 5px;
+	margin-left: 7px;
+	cursor: pointer;
+}
+.nav-right img:hover{
+	opacity: 0.7;
+}
+.nav-right-drop{
+	position: absolute;
+	width: 250px;
+	background: rgba(57, 91, 100, 1);
+	float: left;
+	left: 76%;
+	margin-top: 10px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(1, 1, 1, 0.8);
+	transition: max-height 0.3s;
+	overflow: hidden;
+	max-height: 0;
+
+}
+.nav-right-drop-height{
+	max-height: 120px;
+}
+.middle-nav{
+	display: none;
+}
+.nav-right-drop .user-profile{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 10px;
+}
+.nav-right-drop .user-profile img{
+		width: 40px;
+	height: 40px;
+	border-radius: 50%;
+
+}
+.nav-right-drop .user-profile a{
+	text-decoration: none;
+	color: #fff;
+	margin-top: 5px;
+}
+.nav-right-drop-link{
+	margin: 20px 30px;
+}
+.nav-right-drop-link a{
+	text-decoration: none;
+	color: #fff;
+	margin-top: 20px;
+
+}
+
+.nav-right-drop .user-profile a:hover{
+	color: #ff004f;
+}
+.nav-right-drop-link a:hover{
+	color: #ff004f;
+}
+.copyright{
+	width: 100%;
+	text-align: center;
+	padding: 9px;
+	background: #262626;
+	font-weight: 300;
+	margin-top: 20px;
+}
+
+.copyright i:hover{
+	cursor: pointer;
+	color: #ff004f;
+}
+
+/*main content*/
+.main-container{
+	display: flex;
+	justify-content: space-between;
+	padding: 13px;
+}
+.left-sidebar{
+
+	position: sticky;
+	flex-basis: 20%;	
+	align-self: flex-start;
+	margin-left: 27px;
+	top: 80px;
+	/*background: #262626;*/
+	height: 90vh;
+}
+.right-sidebar{
+	  
+	flex-basis: 25%;
+	position: sticky;
+	top: 80px;
+	align-self: flex-start; 
+	/*background: #262626;*/
+	padding: 20px;
+	border-radius: 4px;
+	color: #626262;
+	height: 90vh;  
+	
+}
+.middle-sidebar{
+	flex-basis: 47%;
+}
+
+.middle-sidebar h1{
+ padding: 5px;
+}
+.post-container{
+	width: 100%;
+	background: #262626;
+	border-radius: 6px;
+	padding: 20px;
+	color: #626262;
+	margin: 10px 0;
+	height: auto;
+}
+.user-profile span{
+	font-size: 13px;
+	color: #9a9a9a;
+	padding-top: 10px; 
+}
+.post-text {
+	color: #9a9a9a;
+	margin: 15px 0;
+	font-size: 20px;
+
+}
+.post-text span{
+	font-weight: 500;
+	color: #626262;
+	padding-right: 10px;
+	font-size: 20px;
+	margin-top: 3px;
+}
+.post-text a{
+	text-decoration: none;
+	padding-left: 10px;
+	color: #1170f0;
+
+}
+.post-text a:hover{
+	color: #1876f2;
+}
+.post-img{
+	width: 100%;
+	border-radius: 4px;
+	margin-bottom: 5px;
+}
+.post-row{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.activity-icons div{
+	display: inline-flex;
+	align-items: center;
+	
+	margin-right: 30px;
+}
+.activity-icons div img{
+	width:18px;
+	margin-right: 10px;
+}
+.activity-icons a:hover {
+	color: black;
+}
+.post-profile-icon {
+	display: flex;
+	align-items: center;
+}
+.post-profile-icon img{
+	width: 20px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+.load-more-btn{
+	display: block;
+	margin: auto;
+	cursor: pointer;
+	padding: 5px 10px;
+	border: 1px solid #9a9a9a;
+	color: #626262;
+	background: transparent;
+	border-radius: 4px;  
+
+}
+.user-profile{
+	display: flex;
+	align-items: center;
+}
+.user-profile img{
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.user-profile p{
+	padding: 5px;
+	font-weight: 500;
+	color: #fff;
+}
+.poster-description h1{
+	font-size: 20px;
+	color: #fff;
+}
+.poster-description p{
+	color: #fff;
+	margin-left: 5px;
+}
+.poster-description a{
+text-decoration: none;
+color: #ff004f;
+font-weight: bold;
+font-size: 20px;
+}
+.poster-description a:hover{
+	color: #fff;
+}
+.post-container h1{
+	color: #fff;	
+	font-size: 20px;
+	margin: 5px 0 5px 0;
+}
+.comment{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	cursor: pointer;
+	
+}
+.comment a{
+	font-size: 15px;
+	text-decoration: none;
+	color: #fff;
+}
+.comment a:hover{
+	color: #ff004f;
+}
+.comment-container{
+	display: flex;
+	overflow: hidden;
+	margin-top: 5px;
+	flex-direction: column;
+	transition: max-height 0.4s;
+	max-height: 0;
+}
+.comment-container-height{
+	max-height: 300px;
+}
+.comment-container span{
+	color: #fff;
+	height: auto;
+}
+.comment-content{
+	display: flex;
+	border: 1px solid whitesmoke;
+	flex-direction: column;
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	height: auto;
+}
+.comment-content h2{
+
+color: #fff;
+font-weight: bold;
+}
+.comment-content p{
+ color: #fff;
+}
+.comment-content-container{
+	height: 250px;
+	overflow:scroll;
+  overflow-x:hidden;
+}
+.comment-form
+{
+	border: 1px solid whitesmoke;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+.comment-form button{
+	border: 1px solid #ff004f;
+	background: #ff004f;
+	width: 100px;
+	height: 20px;
+	float: center;
+	color: #fff;
+	margin: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.comment-form form textarea{
+	width: 100%;
+	border: 0;
+	outline: none;
+	background: #262626;
+	padding: 15px;
+	margin: 15px 0;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 6px;
+}
+.profile-edit a{
+	color: #fff;
+	text-decoration: none;
+}
+.profile-edit a:hover{
+	color: #ff004f;
+}
+.current{
+  background: #080808;
+  top: 60px;
+  z-index: 100;
+  position: sticky;
+}
+
+@media only screen and (max-width: 600px) {
+	.container {
+		padding: 0;
+	}
+	.current {
+    display: none;
+}
+nav{
+	padding: 5px 5%;
+}
+	.nav-right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+		.right-sidebar{
+			display: none;
+		}
+
+		.left-sidebar{
+			display: none;
+		}
+
+		.middle-sidebar {
+    flex-basis: 100%;
+		}
+
+		.nav-middle{
+			display: none;
+		}
+
+		.nav-right ul{
+			display: none;
+		}
+
+		.nav h1{
+			 margin-right: 10px;
+			font-size: 35px;
+		}
+
+		.nav span{
+			font-size: 30px
+		}
+		.nav-right-drop {
+    margin-left: -170px;
+		}
+		.middle-nav{
+			display: flex;
+			position: sticky;
+			background: #080808;;
+			top: 63px;
+		}
+		.middle-nav ul li a{
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	position: relative;
+}
+.middle-nav ul li a::after{
+	content: '';
+	width: 0;
+	height: 3px;
+	background: #ff004f;
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	transition: 0.5s;
+
+}
+.middle-nav ul li a:hover::after{
+	width: 100%;
+}
+		.middle-nav ul li{
+	display: inline-block;
+	list-style: none;
+	margin: 10px;
+	color: #080808;
+
+}
+.middle-nav ul{
+	margin-left: 15px;
+}
+nav h1 i{
+	font-size: 25px;
+}
+
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<nav>
+		<h1>C<span>inemania</span><i class="fa-solid fa-film"></i></h1>
+		<div class="nav-middle">
+			<form>
+				<input type="text" name="movie" placeholder=" search🔍" onblur="">
+			</form>
+		</div>
+
+		<div class="nav-right">
+			<ul>
+				<li><a href="{% url 'dashboard' %}">Home</a></li>
+				<li><a href="{% url 'post' %}">Add Post</a></li>
+				<li><a href="{% url 'myposts' %}">My Posts</a></li>
+			</ul>
+			<a href="#"><img src="{{ user.createuser.avatar.url }}" onclick="show()"></a>
+
+		</div>
+	</nav>
+		<div class="nav-right-drop">
+			<div class="user-profile">
+             <img src="{{ user.createuser.avatar.url }}">
+              <div>
+              <p>{{ user.first_name }} {{ user.last_name }}</p>
+              <a href="{% url 'profile' %}">See Your Profile</a>  
+          </div>
+        </div>
+        <hr>
+        <div class="nav-right-drop-link">
+        	<a href="{% url 'logoutpage' %}">Logout</a>
+        </div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- main content -->
+<div class="main-container">
+	<!--left side bar-->
+	<div class="left-sidebar">
+		
+	</div>
+<!--middle side bar-->
+	<div class="middle-sidebar">
+		<div class="middle-nav">
+			<ul>
+				<li><a href="{% url 'dashboard' %}">Home</a></li>
+				<li><a href="{% url 'post' %}">Add Post</a></li>
+				<li><a href="{% url 'myposts' %}">My Posts</a></li>
+			</ul>
+		</div>
+		<div class="current"><h1>current posts</h1></div>
+		     {% for post in posts %}
+		     <div class="post-container">
+		     	<h1>Posted by</h1>
+        <div class="post-row">
+            <div class="user-profile">
+          <img src="{{ post.user_uuid.avatar.url }}">
+          <div >
+            <p>{{ post.user_uuid.user.first_name }} {{ post.user_uuid.user.last_name }}</p>
+            <span>{{ post.posted_time }}</span>
+          </div >
+        </div>
+        {% if post.user_uuid.user_uuid == user.createuser.user_uuid %}
+        <div class="profile-edit">
+        	<a href="{% url 'editpost' post.id %}">edit</a>
+        	<a href="{% url 'delete' post.id %}">Delete</a>
+        </div>
+        {% endif %}
+        </div>
+      
+        <p class="post-text"><span>{{ post.title }}</span>Release date {{ post.release_date }}</p>
+        <img src="{{ post.poster.url }}" class="post-img">
+        <div class="poster-description">
+        	<h1>Description</h1>
+        	<p>{{ post.description }}</p>
+        	<h1>Genre</h1>
+        	<p>{{ post.genre }}</p>
+        	<h1>Main Actors</h1>
+        	<p>{{ post.main_actors }}</p>
+        	<a href="{{ post.movie_trailer }}" target="_blank">Trailer</a>
+        </div>
+        <div class="comment">
+        		<a href="{% url 'comment' post.id %}">comments</a>
+        	</div>
+      </div>
+      {% endfor %}
+
+
+      <div class="copyright">
+  <p>Copyright &copy Knights <i class="fas fa-heart"></i> Made with Django</p>
+</div>
+	</div>
+<!--right side bar-->
+	<div class="right-sidebar">
+		
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+	var menu = document.querySelector(".nav-right-drop");
+	function show() {
+	
+	menu.classList.toggle("nav-right-drop-height");
+  
+}
+
+</script>
+<script type="text/javascript">
+	var com = document.querySelector(".comment-container")
+	function showComment(){
+		com.classList.toggle("comment-container-height")
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+	<script src="https://kit.fontawesome.com/d885b75ad4.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'index.css' %}">
+	<title>Login</title>
+	<style>
+		form p{
+			color: #ff004f;
+		}
+		
+		@media only screen and (max-width: 600px) {
+			.login form{
+				padding: 10px;
+			}
+			.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 45px;
+    bottom: 0;
+}
+	}
+	</style>
+
+</head>
+<body>
+	<div class="form-head"><h1>C<span>inemania</span><i class="fa-solid fa-film"></i></h1></div>
+	<div class="login-container">
+
+		<div class="login">
+			<form method="post" action="{% url 'loginpage' %}">
+				{% csrf_token %}
+				
+				{% for message in messages %}
+				    <p>{{ message }}</p>
+				{% endfor %}
+				<input type="text" name="username" placeholder="Your Email" required>
+				<input type="password" name="password" placeholder="Password" required>
+				<button class="">Login</button>
+			</form>
+			<p>You Don't have account<a href="{% url 'createaccount' %}">Sign Up Here</a> or<a href="{% url 'home' %}">Back Home</a></p>
+		</div>
+	</div>
+
+
+
+<div class="copyright">
+  <p>Copyright &copy Knights <i class="fas fa-heart"></i> Made with Django</p>
+</div>
+</body>
+</html>
